@@ -3,6 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
 import AddNotePage from './pages/AddNotePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/notes/:id" element={<DetailPage />} />
           <Route path="/newnotes" element={<AddNotePage />} />
+          <Route path='*' element={<NotFoundPage />}/>
         </Routes>
       </main>
     </div>

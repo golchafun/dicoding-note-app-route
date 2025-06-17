@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getNote } from "../utils/local-data";
 import { showFormattedDate } from "../utils";
 import DeleteButton from "../components/DeleteButton";
@@ -9,12 +9,7 @@ function DetailPage() {
     const note = getNote(id);
 
     if (!note) {
-        return (
-            <section>
-                <h2>404</h2>
-                <p>Page not found</p>
-            </section>
-        );
+       return <Navigate to="*" />;
     }
     return (
         <section className="detail-page">
