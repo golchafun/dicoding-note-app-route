@@ -11,7 +11,7 @@ function NoteList({ notes }) {
         <section className="notes-list">
             {notes.map(
                 (note) => (
-                    <NoteItem {...note} />
+                    <NoteItem {...note} key={note.id} />
                 )
             )}
         </section>
