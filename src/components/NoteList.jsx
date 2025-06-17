@@ -9,8 +9,11 @@ function NoteList({ notes }) {
 
     return (
         <section className="notes-list">
-            <NoteItem {...notes[0]} />
-            
+            {notes.map(
+                (note) => (
+                    <NoteItem {...note} />
+                )
+            )}
         </section>
     );
 }
