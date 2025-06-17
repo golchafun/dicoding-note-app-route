@@ -3,7 +3,8 @@
 ## Proyek: Membangun Single Page Application menggunakan React
 ## Materi dicoding: Belajar Fundamental Aplikasi Web dengan React
 
-Ini project submission untuk membangun single page application
+Ini project submission untuk membangun single page application.
+Tidak menggunakan class component. Hanya function component (pakai hook).
 
 Fungsionalitas:
 * melihat catatan
