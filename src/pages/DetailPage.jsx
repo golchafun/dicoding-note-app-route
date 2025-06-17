@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { getNote } from "../utils/local-data";
 import { showFormattedDate } from "../utils";
+import DeleteButton from "../components/DeleteButton";
 
 function DetailPage() {
     const { id } = useParams();
@@ -21,7 +22,7 @@ function DetailPage() {
             <p className="detail-page__createdAt">{showFormattedDate(note.createdAt)}</p>
             <div className="detail-page__body">{note.body}</div>
             <div className="detail-page__action">
-                <button className="action" type="button" title="Hapus"></button>
+                <DeleteButton id={id}/>
             </div>
         </section>
     );
