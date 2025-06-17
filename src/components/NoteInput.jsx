@@ -3,7 +3,7 @@ import { MdOutlineCheck } from "react-icons/md";
 import { addNote } from "../utils/local-data";
 import { useNavigate } from "react-router-dom";
 
-function AddNotePage() {
+function NoteInput() {
 
     const [title, setTitle] = useState("");
     const bodyRef = useRef(null);
@@ -44,4 +44,4 @@ function AddNotePage() {
         </section>
     )
 }
-export default AddNotePage;
+export default NoteInput;

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 function AddButton(){
     const navigate = useNavigate();
     return(
-        <button className="action" type="button" title="tambah" onClick={() => navigate('/newnotes')}><MdAdd size={24} /></button>
+        <button className="action" type="button" title="tambah" onClick={() => navigate('/notes/new')}><MdAdd size={24} /></button>
     );
 }
 
