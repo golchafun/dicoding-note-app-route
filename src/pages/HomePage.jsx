@@ -11,10 +11,8 @@ function HomePage(){
         
             <h2>Catatan Aktif</h2>
 
-            {/* akses notes list */}
             <NoteList notes = {notes}/>
 
-            {/* button add note */}
             <div className="homepage__action">
                 <AddButton />
             </div>
