@@ -1,17 +1,13 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { MdOutlineCheck } from "react-icons/md";
 import { addNote } from "../utils/local-data";
 import { useNavigate } from "react-router-dom";
+import useInput from "./UseInput";
 
 function NoteInput() {
-
-    const [title, setTitle] = useState("");
+    const [title, onTitleChange] = useInput("");
     const bodyRef = useRef(null);
     const navigate = useNavigate();
-
-    function onTitleChange(event) {
-        setTitle(event.target.value);
-    }
 
     function onSubmitHandler(){
         const noteBody = bodyRef.current.innerHTML;
