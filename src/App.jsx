@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
 import NotFoundPage from './pages/NotFoundPage';
-import { useState } from 'react';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import { getUserLogged, putAccessToken } from './utils/network-data';
 
 function App() {
   const [authedUser, setAuthedUser] = useState(null); 
+  const [initializing, setInitializing] = useState(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data } = await getUserLogged();
+      if (data) {
+        setAuthedUser(data);
+      }
+      setInitializing(false);
+    };
+
+    fetchUser();
+  }, []);
 
   const onLoginSuccess = async ({accessToken}) => {
     putAccessToken(accessToken);
@@ -17,11 +29,15 @@ function App() {
     setAuthedUser(data);
   }
 
+  if (initializing) {
+    return null;
+  }
+
   if(authedUser === null){
     return(
       <div className="app-container">
       <header>
-        <Link to="/"><h1>Aplikasi Catatan</h1></Link>
+        <h1><Link to="/">Aplikasi Catatan</Link></h1>
       </header>
       <main>
         <Routes>
