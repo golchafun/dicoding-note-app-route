@@ -4,11 +4,18 @@ import HomePage from './pages/HomePage';
 import DetailPage from './pages/DetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { useState } from 'react';
-import RegisterInput from './components/RegisterInput';
 import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
+import { getUserLogged, putAccessToken } from './utils/network-data';
 
 function App() {
   const [authedUser, setAuthedUser] = useState(null); 
+
+  const onLoginSuccess = async ({accessToken}) => {
+    putAccessToken(accessToken);
+    const {data} = await getUserLogged();
+    setAuthedUser(data);
+  }
 
   if(authedUser === null){
     return(
@@ -18,7 +25,7 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/*" element={<p>Halaman login</p>} />
+          <Route path="/*" element={<LoginPage loginSuccess={onLoginSuccess} />} />
           <Route path='/register' element={<RegisterPage />}/>
         </Routes>
       </main>
