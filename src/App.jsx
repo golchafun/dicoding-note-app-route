@@ -6,9 +6,10 @@ import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import { getUserLogged, putAccessToken } from './utils/network-data';
+import Navigation from './components/Navigation';
 
 function App() {
-  const [authedUser, setAuthedUser] = useState(null); 
+  const [authedUser, setAuthedUser] = useState(null);
   const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
@@ -23,9 +24,9 @@ function App() {
     fetchUser();
   }, []);
 
-  const onLoginSuccess = async ({accessToken}) => {
+  const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);
-    const {data} = await getUserLogged();
+    const { data } = await getUserLogged();
     setAuthedUser(data);
   }
 
@@ -33,32 +34,40 @@ function App() {
     return null;
   }
 
-  if(authedUser === null){
-    return(
+  if (authedUser === null) {
+    return (
       <div className="app-container">
-      <header>
-        <h1><Link to="/">Aplikasi Catatan</Link></h1>
-      </header>
-      <main>
-        <Routes>
-          <Route path="/*" element={<LoginPage loginSuccess={onLoginSuccess} />} />
-          <Route path='/register' element={<RegisterPage />}/>
-        </Routes>
-      </main>
-    </div>
+        <header>
+
+          <h1><Link to="/">Aplikasi Catatan</Link></h1>
+  
+        </header>
+        <main>
+          <Routes>
+            <Route path="/*" element={<LoginPage loginSuccess={onLoginSuccess} />} />
+            <Route path='/register' element={<RegisterPage />} />
+          </Routes>
+        </main>
+      </div>
     );
   }
+
+  const onLogout = () => {
+    setAuthedUser(null);
+    putAccessToken('');
+  };
 
   return (
     <div className="app-container">
       <header>
-        <Link to="/"><h1>Aplikasi Catatan</h1></Link>
+        <h1><Link to="/">Aplikasi Catatan</Link></h1>
+        <Navigation logout={onLogout} name={authedUser.name}/>
       </header>
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/notes/:id" element={<DetailPage />} />
-          <Route path='*' element={<NotFoundPage />}/>
+          <Route path='*' element={<NotFoundPage />} />
         </Routes>
       </main>
     </div>
