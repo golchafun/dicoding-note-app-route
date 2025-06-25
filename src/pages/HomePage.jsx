@@ -4,7 +4,6 @@ import NoteList from "../components/NoteList";
 import { getActiveNotes } from "../utils/network-data";
 
 function HomePage() {
-    // const notes = getAllNotes();
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
@@ -15,11 +14,8 @@ function HomePage() {
 
     return (
         <section className="homepage">
-
             <h2>Catatan Aktif</h2>
-
             <NoteList notes={notes} />
-
             <div className="homepage__action">
                 <AddButton />
             </div>

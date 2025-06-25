@@ -1,13 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteNote } from "../utils/local-data";
+import { deleteNote } from "../utils/network-data";
 import { MdDelete } from "react-icons/md";
 
 function DeleteButton({id}){
     const navigate = useNavigate();
 
-    function deleteAction(){
-        deleteNote(id);
+    async function deleteAction(){
+        const {error} = await deleteNote(id);
+
+        if(error){
+            alert("Gagal hapus catatan");
+            return;
+        }
         navigate("/")
     }
 

@@ -38,9 +38,7 @@ function App() {
     return (
       <div className="app-container">
         <header>
-
           <h1><Link to="/">Aplikasi Catatan</Link></h1>
-  
         </header>
         <main>
           <Routes>

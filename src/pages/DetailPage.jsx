@@ -1,26 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { getNote } from "../utils/local-data";
+import { getNote } from "../utils/network-data";
 import NoteInput from "../components/NoteInput";
 import NoteDetail from "../components/NoteDetail";
 
 function DetailPage() {
     const { id } = useParams();
-    const note = getNote(id);
+    const [note, setNote] = useState(null);
+    const [notFound, setNotFound] = useState(false);
 
-    if(id==='new'){
-        return(
-            <NoteInput />
-        );
-    }
+    useEffect(() => {
+        if (id === 'new') return;
 
-    if (!note) {
-       return <Navigate to="*" />;
-    }
+        const fetchNote = async () => {
+            const { error, data } = await getNote(id);
+            if (error || !data) {
+                setNotFound(true);
+            } else {
+                setNote(data);
+            }
+        };
+        fetchNote();
+    }, [id]);
 
-    return (
-        <NoteDetail {...note}/>
-    );
+    if (id === 'new') return <NoteInput />;
+    if (notFound) return <Navigate to="*" />;
+    if (!note) return <p>Loading...</p>;
+
+    return <NoteDetail {...note} />;
 }
 
 export default DetailPage;
