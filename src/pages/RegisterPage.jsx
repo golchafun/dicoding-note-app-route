@@ -7,8 +7,8 @@ function RegisterPage() {
     const navigate = useNavigate();
 
     async function onRegisterHandle(user) {
-        const {password, confirmPassword} = user;
-        if(password !== confirmPassword){
+        const { password, confirmPassword } = user;
+        if (password !== confirmPassword) {
             alert("Password dan konfirmasi password tidak sama");
             return;
         }

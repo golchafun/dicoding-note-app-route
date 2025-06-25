@@ -3,16 +3,16 @@ import { MdLogout } from "react-icons/md";
 import ThemeButton from "./ThemeComponent";
 
 
-function Navigation({logout, name}) {
-    if(name === ''){
-        return(
+function Navigation({ logout, name }) {
+    if (name === '') {
+        return (
             <nav className="navigation">
-            <ul>
-                <li>
-                    <ThemeButton />
-                </li>
-            </ul>
-        </nav>
+                <ul>
+                    <li>
+                        <ThemeButton />
+                    </li>
+                </ul>
+            </nav>
         );
     }
     return (

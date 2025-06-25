@@ -39,7 +39,7 @@ function App() {
       <div className="app-container">
         <header>
           <h1><Link to="/">Aplikasi Catatan</Link></h1>
-          <Navigation name={''}/>
+          <Navigation name={''} />
         </header>
         <main>
           <Routes>
@@ -60,7 +60,7 @@ function App() {
     <div className="app-container">
       <header>
         <h1><Link to="/">Aplikasi Catatan</Link></h1>
-        <Navigation logout={onLogout} name={authedUser.name}/>
+        <Navigation logout={onLogout} name={authedUser.name} />
       </header>
       <main>
         <Routes>

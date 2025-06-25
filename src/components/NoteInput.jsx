@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { MdOutlineCheck } from "react-icons/md";
-// import { addNote } from "../utils/local-data";
 import { addNote } from "../utils/network-data";
 import { useNavigate } from "react-router-dom";
 import useInput from "./UseInput";
@@ -10,9 +9,9 @@ function NoteInput() {
     const bodyRef = useRef(null);
     const navigate = useNavigate();
 
-    function onSubmitHandler(){
+    function onSubmitHandler() {
         const noteBody = bodyRef.current.innerHTML;
-        addNote({title, body: noteBody});
+        addNote({ title, body: noteBody });
         navigate("/");
     }
 

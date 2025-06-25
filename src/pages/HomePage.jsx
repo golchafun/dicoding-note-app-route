@@ -10,7 +10,7 @@ function HomePage() {
         getActiveNotes().then(({ data }) => {
             setNotes(data)
         })
-    },[]);
+    }, []);
 
     return (
         <section className="homepage">

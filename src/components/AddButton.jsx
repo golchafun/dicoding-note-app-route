@@ -3,9 +3,9 @@ import { MdAdd } from 'react-icons/md';
 import { useNavigate } from "react-router-dom";
 
 
-function AddButton(){
+function AddButton() {
     const navigate = useNavigate();
-    return(
+    return (
         <button className="action" type="button" title="tambah" onClick={() => navigate('/notes/new')}><MdAdd size={24} /></button>
     );
 }
