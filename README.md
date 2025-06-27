@@ -12,6 +12,6 @@ Fungsionalitas:
 * hapus catatan
 * page 404
 
-Penilaian: 2 bintang
+Penilaian: 3 bintang (hanya memenuhi kriteria wajib)
 
 
